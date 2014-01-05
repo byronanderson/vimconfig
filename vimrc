@@ -1,33 +1,54 @@
-execute pathogen#infect()
+" needed for vim-textobj-rubyblock
+runtime macros/matchit.vim
 
-syntax on
+filetype indent plugin on
+syntax enable
+
+set nocompatible
+set shiftwidth=2
+set tabstop=2
+set expandtab
+set smartindent
 set smartcase
+set autoindent
 set hlsearch
 set incsearch
-let mapleader=','
-imap jk <ESC>
+set laststatus=2
+set ruler
+set textwidth=80
+set colorcolumn=+1
+set relativenumber
 
-nmap <Return> :nohlsearch<cr>
+execute pathogen#infect()
 
-" Ctrl-<direction> to move to window split that direction
-nmap <C-l> <C-w>l
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
-nmap <C-h> <C-w>h
-
-nmap <leader>T :tabnew<cr>
-nmap <leader>w :w<cr>
-nmap <leader>q :q<cr>
-
-" Tab and Shift-Tab to navigate tabs
+let mapleader=","
 nmap <Tab> :tabn<cr>
 nmap <S-Tab> :tabp<cr>
 
-" <leader><leader> to search for word under cursor
-nmap <leader><leader> /<C-R>=expand('<cword>')<CR><CR>N
+nmap <leader>w :w<cr>
+nmap <leader>q :q<cr>
+nmap <leader>T :tabnew<cr>
+nmap <leader>l :CommandTFlush<cr>:so $MYVIMRC<cr>
 
-" <leader>f finds the current word with Ack in a new tab
-nmap <leader>f :let cword = "<C-R>=expand('<cword>')<CR>"<CR>:tabnew<cr>:exec "Ack ".cword<cr>
+nmap <silent> <c-k> :wincmd k<cr>
+nmap <silent> <c-j> :wincmd j<cr>
+nmap <silent> <c-h> :wincmd h<cr>
+nmap <silent> <c-l> :wincmd l<cr>
 
-" <leader>b does a git blame
+nmap <Return> :nohlsearch<cr>
+nmap <leader><leader> /<c-r>=expand("<cword>")<cr><cr>N
+nmap <leader>f :Ack <c-r>=expand("<cword>")<cr>
+nmap <leader>d :Ack "def (self\.)?<c-r>=expand("<cword>")<cr>"
+
 nmap <leader>b :Gblame<cr>
+
+nmap ; :
+
+imap jk <ESC>
+vmap ; <ESC>
+
+nmap <leader>r :Dispatch! rspec %<cr>
+nmap <leader>R :Dispatch! ruby %<cr>
+nmap <leader>g :Copen<cr>
+
+set makeprg=ruby\ %
