@@ -51,4 +51,13 @@ nmap <leader>r :Dispatch! rspec %<cr>
 nmap <leader>R :Dispatch! ruby %<cr>
 nmap <leader>g :Copen<cr>
 
+function! ReplaceIt()
+  call inputsave()
+  let replacement = input('Enter replacement:')
+  call inputrestore()
+  execute '%s/'.expand('<cword>').'/'.replacement.'/g'
+endfunction
+
+nmap <leader>s :call ReplaceIt()<cr>
+
 set makeprg=ruby\ %
