@@ -37,8 +37,8 @@ Installation consists of installing each of the dependencies and then the vimrc
 
     ```bash
       cd ~/.vim/bundle
-      git clone git://github.com/byronanderson/vimrc
-      ln -s vimrc/vimrc ~/.vimrc
+      git clone git://github.com/byronanderson/vimconfig
+      ln -s vimconfig/vimrc ~/.vimrc
     ```
 
 Other plugins I use that are not direct dependencies of this configuration:
