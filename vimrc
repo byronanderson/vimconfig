@@ -9,6 +9,7 @@ set shiftwidth=2
 set tabstop=2
 set expandtab
 set smartindent
+set ignorecase
 set smartcase
 set autoindent
 set hlsearch
